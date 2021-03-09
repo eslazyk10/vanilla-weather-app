@@ -24,7 +24,14 @@
   font-size: 30px;
   line-height: 1em;
   color: #0B58CA;
-  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.temperature{
+  font-size: 30px;
+  line-height: 1em;
+  color: #0B58CA;
+  font-weight: 700;
 }
 
 .form-control{
@@ -47,15 +54,20 @@ h1{
   color: #0B58CA;
 }
 
-a{
+.units{
   text-decoration: none;
   color: black;
 }
 
-a.hover{
-  color: #0B58CA;
-  cursor: pointer;
+.units1{
+    color: #0B58CA;
 }
+
+a{
+    text-decoration: none;
+}
+
+
 
 
 button{
@@ -80,4 +92,59 @@ ul{
   margin: 0 auto;
   text-align: center;
   line-height: 1.5;
+}
+
+.open-source-link{
+    display: block;
+    text-align: left;
+    margin-top: 8px;
+    margin-left: 140px;
+}
+
+.first{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #E7ECF4;
+    margin-left: 10px;
+}
+
+.second{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #E7ECF4;
+    margin-left: 3px;
+}
+
+.third{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #E7ECF4;
+    margin-left: 3px;
+}
+
+.fourth{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #E7ECF4;
+    margin-left: 3px;
+}
+
+.fifth{
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #E7ECF4;
+    margin-left: 3px;
+}
+
+.sixth{
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-left: 3px;
+    margin-right: 10px;
+    background-color: #E7ECF4;
+}
+
+.wrapper{
+    background-color: rgba(11, 88, 202, 0.8);
+    
 }
