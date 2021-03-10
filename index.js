@@ -1,5 +1,13 @@
 function formatDate(timestamp){
     let date = new Date(timestamp);
+    
+    let days= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let day= days[date.getDay()];
+    return `${day}, ${formatHours(timestamp)}`;
+}
+
+function formatHours(timestamp){
+    let date = new Date(timestamp);
     let hour = date.getHours();
         if (hour < 10) {
     hour = `0${hour}`;
@@ -11,9 +19,8 @@ function formatDate(timestamp){
         if (minute < 10) {
     minute = `0${minute}`;
   }
-    let days= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let day= days[date.getDay()];
-    return `${day}, ${hour}:${minute}`;
+    
+    return `${hour}:${minute}`;
 }
 
 function switchCelcius(event){
@@ -37,8 +44,28 @@ let fahrenheit=document.querySelector("#current-temp-fahrenheit");
 fahrenheit.addEventListener("click", switchFahrenheit);
 
 function displayForecast(response){
-    console.log(response.data.list[0]);
     let forecastElement=document.querySelector("#forecast");
+    let forecast= null;
+    console.log(forecast);
+
+    for (let index = 0; index <=5; index++) {
+        let forecast=(response.data.list[index]);
+        forecastElement.innerHTML += `
+    <div class="col-2">
+            <li class="first">
+                <strong><span id="first-day">${formatHours(forecast.dt * 1000)}</span>
+                    <br>
+                <img class="weather-forecast-icon" id="weather-icon-first" src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" width="50px">                    <br>
+                <span id="first-day-temp">${Math.round(forecast.main.temp)}°</span>
+                </strong>
+                <div class="units">
+                    <a href="#" class="units" id="future-temp-fahrenheit">°F/</a>
+                    <a href="#" class="units" id="future-temp-celcius">°C</a>
+                </div>
+            </li>
+        </div>`;
+        
+    }
 }
 
 function search(city){
