@@ -45,7 +45,7 @@
   border: 3px solid black;
 }
 
-form{
+#search-form{
   text-align: center;
   display: block;
   margin: 0 auto;
@@ -80,7 +80,7 @@ button{
   background-color: #0B58CA;
   color:white;
   padding: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-bottom: 15px;
   display: inline;
 }
