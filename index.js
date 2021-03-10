@@ -22,7 +22,9 @@ currentTime.addEventListener("submit", changeDay);
 
 function switchCelcius(event){
     event.preventDefault();
-    document.querySelector("#temp-input").innerHTML="17";
+    let celciusTemp1= `${fahrenheitTemp}`-32;
+    let celciusTemp= `${celciusTemp1}` * 5 / 9;
+    document.querySelector("#temp-input").innerHTML=Math.round(`${celciusTemp}`);
 }
 
 let celcius=document.querySelector("#current-temp-celcius");
@@ -30,11 +32,14 @@ celcius.addEventListener("click", switchCelcius);
 
 function switchFahrenheit(event){
     event.preventDefault();
-    document.querySelector("#temp-input").innerHTML="66";
+    document.querySelector("#temp-input").innerHTML=`${fahrenheitTemp}`;
 }
 
-let ferenheit=document.querySelector("#current-temp-fahrenheit");
-ferenheit.addEventListener("click", switchFahrenheit);
+let fahrenheitTemp= null;
+
+
+let fahrenheit=document.querySelector("#current-temp-fahrenheit");
+fahrenheit.addEventListener("click", switchFahrenheit);
 
 function changeCity(event){
     event.preventDefault();
@@ -68,7 +73,8 @@ function displayWeather(response){
     let humidityElement=Math.round(response.data.main.humidity);
     let feelslikeElement=Math.round(response.data.main.feels_like);
     let iconElement=document.querySelector(".condition-icon");
-    
+    fahrenheitTemp=Math.round(response.data.main.temp);
+    celciusTemp=Math.round(`(${fahrenheitTemp}−32)×5/9`);
     
     document.querySelector("#temp-input").innerHTML=`${temperatureElement}`;
     document.querySelector("h1").innerHTML=`${locationElement}`;
