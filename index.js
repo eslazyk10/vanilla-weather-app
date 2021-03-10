@@ -70,7 +70,7 @@ function displayWeather(response){
     let locationElement= (response.data.name);
     console.log(locationElement);
     document.querySelector("h1").innerHTML=`${locationElement}`;
-    let conditionElement=(response.data.weather[0].main);
+    let conditionElement=(response.data.weather[0].description);
     console.log(conditionElement);
     document.querySelector("#current-condition-input").innerHTML=`${conditionElement}`;
     let windSpeedElement=Math.round(response.data.wind.speed);
@@ -79,6 +79,9 @@ function displayWeather(response){
     document.querySelector("#humidity-input").innerHTML=`${humidityElement}`;
     let feelslikeElement=Math.round(response.data.main.feels_like);
     document.querySelector("#real-feel-input").innerHTML=`${feelslikeElement}`;
+    let iconElement=document.querySelector(".condition-icon");
+    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
 }
 
 function getCurrentPosition(event){

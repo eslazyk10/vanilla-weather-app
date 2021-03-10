@@ -18,6 +18,7 @@
 .current{
   font-size: 20px;
   padding-left: 20px;
+  text-transform: capitalize;
 }
 
 .current-overview{
@@ -26,6 +27,11 @@
   line-height: 1em;
   color: #0B58CA;
   margin-bottom: 30px;
+  text-transform: capitalize;
+}
+
+.condition-icon{
+    font-size: 30px;
 }
 
 .temperature{
