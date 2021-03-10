@@ -12,7 +12,7 @@ function formatHours(timestamp){
         if (hour < 10) {
     hour = `0${hour}`;
   }
-        if (hour >12) {
+        if (hour > 12) {
             hour=`${hour}` - 12;
         }
     let minute= date.getMinutes();
@@ -54,7 +54,7 @@ function displayForecast(response){
         forecastElement.innerHTML += `
     <div class="col-2">
             <li class="first">
-                <strong><span id="first-day">${formatHours(forecast.dt * 1000)}</span>
+                <strong><span id="first-day">${formatHours(forecast.dt * 1000)}</span><span class="am-pm"></span>
                     <br>
                 <img class="weather-forecast-icon" id="weather-icon-first" src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" width="50px">                    <br>
                 <span id="first-day-temp">${Math.round(forecast.main.temp)}°</span>
@@ -130,10 +130,5 @@ function getCurrentPosition(event){
     navigator.geolocation.getCurrentPosition(showPosition);
 }    
 
-
 let locationButton=document.querySelector(".btn-current-city");
 locationButton.addEventListener("click", getCurrentPosition);
-
-
-
-
