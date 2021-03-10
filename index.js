@@ -46,6 +46,7 @@ fahrenheit.addEventListener("click", switchFahrenheit);
 function displayForecast(response){
     let forecastElement=document.querySelector("#forecast");
     let forecast= null;
+    forecastElement.innerHTML=null;
     console.log(forecast);
 
     for (let index = 0; index <=5; index++) {
