@@ -41,7 +41,8 @@ let fahrenheit=document.querySelector("#current-temp-fahrenheit");
 fahrenheit.addEventListener("click", switchFahrenheit);
 
 function displayForecast(response){
-    console.log(response.data);
+    console.log(response.data.list[0]);
+    let forecastElement=document.querySelector("#forecast");
 }
 
 function changeCity(event){
