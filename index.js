@@ -5,7 +5,6 @@ function changeDay(event){
 }
 
 let now= new Date();
-console.log(new Date);
 let hour = now.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -16,7 +15,6 @@ let hour = now.getHours();
   }
 let days= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day= days[now.getDay()];
-console.log(`${day}, ${hour}:${minute}`);
 
 let currentTime=document.querySelector("form");
 currentTime.addEventListener("submit", changeDay);
@@ -30,13 +28,13 @@ function switchCelcius(event){
 let celcius=document.querySelector("#current-temp-celcius");
 celcius.addEventListener("click", switchCelcius);
 
-function switchFerenheit(event){
+function switchFahrenheit(event){
     event.preventDefault();
     document.querySelector("#temp-input").innerHTML="66";
 }
 
-let ferenheit=document.querySelector("#current-temp-ferenheit");
-ferenheit.addEventListener("click", switchFerenheit);
+let ferenheit=document.querySelector("#current-temp-fahrenheit");
+ferenheit.addEventListener("click", switchFahrenheit);
 
 function changeCity(event){
     event.preventDefault();
@@ -53,7 +51,6 @@ let city=document.querySelector("form");
 city.addEventListener("submit", changeCity);
 
 function showPosition(position){
-    console.log(position);
     let latitude=(position.coords.latitude);
     let longitude=(position.coords.longitude);
 
