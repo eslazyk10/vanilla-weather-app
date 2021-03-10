@@ -1,24 +1,20 @@
-function changeDay(event){
-
-    let h3 =document.querySelector("#day-time-input");
-    h3.innerHTML=`${day}, ${hour}:${minute}`;
-}
-
-let now= new Date();
-let hour = now.getHours();
-  if (hour < 10) {
+function formatDate(timestamp){
+    let date = new Date(timestamp);
+    let hour = date.getHours();
+        if (hour < 10) {
     hour = `0${hour}`;
   }
-  let minute = now.getMinutes();
-  if (minute < 10) {
+        if (hour >12) {
+            hour=`${hour}` - 12;
+        }
+    let minute= date.getMinutes();
+        if (minute < 10) {
     minute = `0${minute}`;
   }
-let days= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let day= days[now.getDay()];
-
-let currentTime=document.querySelector("form");
-currentTime.addEventListener("submit", changeDay);
-
+    let days= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let day= days[date.getDay()];
+    return `${day}, ${hour}:${minute}`;
+}
 
 function switchCelcius(event){
     event.preventDefault();
@@ -82,6 +78,7 @@ function displayWeather(response){
     let windSpeedElement=Math.round(response.data.wind.speed);
     let humidityElement=Math.round(response.data.main.humidity);
     let feelslikeElement=Math.round(response.data.main.feels_like);
+    let dateElement=document.querySelector("#day-time-input");
     let iconElement=document.querySelector(".condition-icon");
     fahrenheitTemp=Math.round(response.data.main.temp);
     celciusTemp=Math.round(`(${fahrenheitTemp}−32)×5/9`);
@@ -92,6 +89,7 @@ function displayWeather(response){
     document.querySelector("#wind-speed-input").innerHTML=`${windSpeedElement}`;
     document.querySelector("#humidity-input").innerHTML=`${humidityElement}`;
     document.querySelector("#real-feel-input").innerHTML=`${feelslikeElement}`;
+    dateElement.innerHTML= formatDate(response.data.dt * 1000);
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
