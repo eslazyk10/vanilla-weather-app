@@ -65,23 +65,21 @@ function showPosition(position){
 function displayWeather(response){
     console.log(response);
     let temperatureElement=Math.round(response.data.main.temp);
-    console.log(temperatureElement);
-    document.querySelector("#temp-input").innerHTML=`${temperatureElement}`;
     let locationElement= (response.data.name);
-    console.log(locationElement);
-    document.querySelector("h1").innerHTML=`${locationElement}`;
     let conditionElement=(response.data.weather[0].description);
-    console.log(conditionElement);
-    document.querySelector("#current-condition-input").innerHTML=`${conditionElement}`;
     let windSpeedElement=Math.round(response.data.wind.speed);
-    document.querySelector("#wind-speed-input").innerHTML=`${windSpeedElement}`;
     let humidityElement=Math.round(response.data.main.humidity);
-    document.querySelector("#humidity-input").innerHTML=`${humidityElement}`;
     let feelslikeElement=Math.round(response.data.main.feels_like);
-    document.querySelector("#real-feel-input").innerHTML=`${feelslikeElement}`;
     let iconElement=document.querySelector(".condition-icon");
+    
+    
+    document.querySelector("#temp-input").innerHTML=`${temperatureElement}`;
+    document.querySelector("h1").innerHTML=`${locationElement}`;
+    document.querySelector("#current-condition-input").innerHTML=`${conditionElement}`;
+    document.querySelector("#wind-speed-input").innerHTML=`${windSpeedElement}`;
+    document.querySelector("#humidity-input").innerHTML=`${humidityElement}`;
+    document.querySelector("#real-feel-input").innerHTML=`${feelslikeElement}`;
     iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-
 }
 
 function getCurrentPosition(event){
