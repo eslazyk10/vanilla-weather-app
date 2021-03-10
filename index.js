@@ -37,9 +37,12 @@ function switchFahrenheit(event){
 
 let fahrenheitTemp= null;
 
-
 let fahrenheit=document.querySelector("#current-temp-fahrenheit");
 fahrenheit.addEventListener("click", switchFahrenheit);
+
+function displayForecast(response){
+    console.log(response.data);
+}
 
 function changeCity(event){
     event.preventDefault();
@@ -51,6 +54,9 @@ function changeCity(event){
 let apiKey= "5b8bfd096caf5847f3506db76bfb75ad";
 let url=`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=imperial`;
 axios.get(url).then(displayWeather); 
+
+let forecastUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput.value}&appid=${apiKey}&units=imperial`;
+axios.get(forecastUrl).then(displayForecast);
 }
 let city=document.querySelector("form");
 city.addEventListener("submit", changeCity);
@@ -62,6 +68,9 @@ function showPosition(position){
     let apiKey= "5b8bfd096caf5847f3506db76bfb75ad";
     let geoUrl= `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
     axios.get(geoUrl).then(displayWeather);
+
+    let forecastUrl= `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=imperial`;
+    axios.get(forecastUrl).then(displayForecast);
 }
 
 function displayWeather(response){
