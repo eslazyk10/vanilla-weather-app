@@ -41,22 +41,27 @@ function displayForecast(response){
     let forecastElement=document.querySelector("#forecast");
 }
 
-function changeCity(event){
-    event.preventDefault();
-    let cityInput=document.querySelector("#search-text-input");
-    let h1=document.querySelector("h1");
-    h1.innerHTML=`${cityInput.value}`;
-
-
-let apiKey= "5b8bfd096caf5847f3506db76bfb75ad";
-let url=`https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=imperial`;
+function search(city){
+    let apiKey= "5b8bfd096caf5847f3506db76bfb75ad";
+let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
 axios.get(url).then(displayWeather); 
 
-let forecastUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${cityInput.value}&appid=${apiKey}&units=imperial`;
+    let forecastUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
 axios.get(forecastUrl).then(displayForecast);
 }
-let city=document.querySelector("form");
-city.addEventListener("submit", changeCity);
+
+function handleSubmit(event){
+    event.preventDefault();
+    let cityInput=document.querySelector("#search-text-input");
+    search(cityInput.value);
+    let h1=document.querySelector("h1");
+    h1.innerHTML=`${cityInput.value}`;
+}
+
+search("Nashville");
+
+let form=document.querySelector("form");
+form.addEventListener("submit", handleSubmit);
 
 function showPosition(position){
     let latitude=(position.coords.latitude);
