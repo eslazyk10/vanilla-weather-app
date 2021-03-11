@@ -12,9 +12,6 @@ function formatHours(timestamp){
         if (hour < 10) {
     hour = `0${hour}`;
   }
-        if (hour > 12) {
-            hour=`${hour}` - 12;
-        }
     let minute= date.getMinutes();
         if (minute < 10) {
     minute = `0${minute}`;
@@ -57,12 +54,8 @@ function displayForecast(response){
                 <strong><span id="first-day">${formatHours(forecast.dt * 1000)}</span><span class="am-pm"></span>
                     <br>
                 <img class="weather-forecast-icon" id="weather-icon-first" src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" width="50px">                    <br>
-                <span id="first-day-temp">${Math.round(forecast.main.temp)}°</span>
+                <span id="first-day-temp">${Math.round(forecast.main.temp)}°F</span>
                 </strong>
-                <div class="units">
-                    <a href="#" class="units" id="future-temp-fahrenheit">°F/</a>
-                    <a href="#" class="units" id="future-temp-celcius">°C</a>
-                </div>
             </li>
         </div>`;
         
